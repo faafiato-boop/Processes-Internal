@@ -2,9 +2,12 @@
 # TF 29/07/2026
 # Sprint 1 (MVP)
 
+# Module to shuffle quiz questions
+import random
+
 # LAYOUT CONSTANTS
-ENGLISH_WIDTH = 20
-FAASAMOA_WIDTH = 20
+ENGLISH_WIDTH = 15
+FAASAMOA_WIDTH = 15
 
 # MENU CONSTANTS
 VIEW_VOCABULARY = 1
@@ -37,8 +40,30 @@ def display_vocabulary():
 
     for english_word, faasamoa_word in vocabulary.items():
         print(
-            f"{faasamoa_word.capitalize():<{FAASAMOA_WIDTH}} | {english_word.capitalize():<{ENGLISH_WIDTH}}"
+            f"{faasamoa_word.capitalize():<{FAASAMOA_WIDTH}} | "
+            f"{english_word.capitalize():<{ENGLISH_WIDTH}}"
         )
+
+
+def quiz_user():
+    """Quiz the user on words in vocabulary."""
+    print("\n--- Gagana Samoa Quiz ---")
+
+    questions = list(vocabulary.items())
+
+    # Shuffle the list of keys
+    random.shuffle(questions)
+
+    # Iterate directly through the dictionary
+    for faasamoa_word, english_translation in questions:
+        user_answer = input(
+            f"What is the English translation for '{faasamoa_word}'? "
+            ).strip().lower()
+
+        if user_answer == english_translation.lower():
+            print("Correct!\n")
+        else:
+            print(f"Incorrect. The correct answer is: {english_translation}\n")
 
 
 def main():
@@ -50,14 +75,14 @@ def main():
         print("1. Vocabulary List")
         print("2. Quiz me")
         print("3. Exit")
-        
+
         # TRY to catch bad inputs before they crash the program
         try:
             # ask user to select an option (1-3)
             choice = int(input("Enter an option (1-3): "))
         except ValueError:
             print(INVALID_INPUT)
-            
+
             # This restarts the loop immediately
             continue
 
@@ -66,6 +91,12 @@ def main():
 
             # call the function
             display_vocabulary()
+
+        # if user inputs '2' quiz the user
+        elif choice == QUIZ_ME:
+
+            # call the function
+            quiz_user()
 
         # if user inputs '3' exits program
         elif choice == EXIT:
@@ -77,18 +108,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-            
-
-        
-    
-    
-
-
-        
-
-
-    
-
-    
-
-
