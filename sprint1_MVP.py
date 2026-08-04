@@ -33,12 +33,12 @@ def display_vocabulary():
     print("\n--- Gagana Samoa Program ---")
 
     # print headers for table columns
-    print(f"{'English':<{ENGLISH_WIDTH}} | {'Samoan':<{FAASAMOA_WIDTH}}")
+    print(f"{'Samoan':<{FAASAMOA_WIDTH}} | {'English':<{ENGLISH_WIDTH}}")
 
     # print a dividing line matching total width
     print("-" * (ENGLISH_WIDTH + FAASAMOA_WIDTH + 3))
 
-    for english_word, faasamoa_word in vocabulary.items():
+    for faasamoa_word, english_word in vocabulary.items():
         print(
             f"{faasamoa_word.capitalize():<{FAASAMOA_WIDTH}} | "
             f"{english_word.capitalize():<{ENGLISH_WIDTH}}"
