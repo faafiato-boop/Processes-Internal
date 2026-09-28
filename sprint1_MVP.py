@@ -17,7 +17,7 @@ EXIT = 3
 # ERROR CONSTANT
 INVALID_INPUT = "Invalid input, please enter a number between 1-3"
 
-# Samoan to English vocaublary dictionary
+# Samoan to English vocabulary dictionary
 vocabulary_categories = {
     "Common Phrases": {
         "Talofa": "Hello",
